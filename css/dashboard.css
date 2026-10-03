@@ -2,3 +2,5 @@
 .welcome{background:linear-gradient(135deg,#071323,#0b1e35 52%,#271b08);border:1px solid #263b54;box-shadow:0 24px 60px rgba(0,0,0,.35)}
 .welcome span{color:#ffd84d}.welcome p{color:#9eafc2}.xp{background:rgba(231,189,88,.10);border:1px solid rgba(231,189,88,.2);color:#e7bd58}
 .dash-card,.content-card{background:linear-gradient(145deg,#0c1521,#09111b);border-color:#1c3047;color:#edf4fb}.dash-card small,.content-body p{color:#8e9eb1}.cover{background:linear-gradient(135deg,#0b2a4b,#07111e);border-bottom:1px solid #1b3047}.tag{background:rgba(47,143,255,.11);color:#67adff;border:1px solid rgba(47,143,255,.18)}
+
+.admin-row{padding:0 0 8px}.admin-row .container{display:flex;justify-content:flex-start}.admin-row .btn{box-shadow:0 10px 25px rgba(231,189,88,.14)}
