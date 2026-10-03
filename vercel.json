@@ -1,14 +1,3 @@
 {
-  "cleanUrls": true,
-  "rewrites": [
-    {"source":"/","destination":"/index.html"},
-    {"source":"/admin","destination":"/admin/index.html"},
-    {"source":"/admin/students","destination":"/admin/students.html"},
-    {"source":"/admin/videos","destination":"/admin/videos.html"},
-    {"source":"/admin/images","destination":"/admin/images.html"},
-    {"source":"/admin/exams","destination":"/admin/exams.html"},
-    {"source":"/admin/results","destination":"/admin/results.html"},
-    {"source":"/admin/purchases","destination":"/admin/purchases.html"},
-    {"source":"/admin/settings","destination":"/admin/settings.html"}
-  ]
+  "cleanUrls": false
 }

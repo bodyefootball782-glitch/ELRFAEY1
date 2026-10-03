@@ -42,3 +42,6 @@ update public.profiles set role='admin' where id='USER-ID-HERE';
 - تم إصلاح مسارات لوحة الإدارة باستخدام Vercel rewrites.
 - أضيفت قناة WhatsApp وTikTok ورقم المساعدة 01105638650، وتم حذف رابط YouTube.
 - بعد التحديث شغّل `supabase/schema.sql` مرة أخرى في SQL Editor لتطبيق عمود `account_type` وتحديث Trigger التسجيل.
+
+
+FINAL FIX: Admin pages use direct .html links to avoid Vercel rewrite/page-not-found issues. Registration supports only Student or Admin; Admin registration requires password only.
