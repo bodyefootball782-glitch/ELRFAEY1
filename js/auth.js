@@ -36,11 +36,12 @@ document.getElementById('registerForm')?.addEventListener('submit',async e=>{
   const name=document.getElementById('fullName').value.trim(), p=document.getElementById('password').value, pc=document.getElementById('passwordConfirm')?.value||'', g=grade?.value||'', s=stage?.value||'';
   if(!validName(name)){msg('اكتب الاسم الرباعي كاملًا، 4 أسماء.');return}
   if(!s||!g){msg('اختار المرحلة والصف الدراسي.');return}
+  if(!['student','teacher','admin'].includes(accountType)){msg('اختار نوع الحساب.');return}
   if(!validPass(p)){msg('كلمة السر لازم تكون 10 أحرف أو أرقام أو رموز بالضبط، ومن غير مسافات.');return}
   if(p!==pc){msg('تأكيد كلمة السر غير مطابق.');return}
   msg('جاري إنشاء الحساب...');
   try{
-    const data=await apiAuth('register',{full_name:name,stage:s,grade:g,password:p});
+    const data=await apiAuth('register',{full_name:name,stage:s,grade:g,account_type:accountType,password:p});
     await useSession(data.session);
     msg('تم إنشاء الحساب بنجاح.',true);
     setTimeout(()=>location.href='dashboard.html',350);

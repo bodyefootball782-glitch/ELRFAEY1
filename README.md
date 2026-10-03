@@ -34,3 +34,11 @@ update public.profiles set role='admin' where id='USER-ID-HERE';
 
 ## ملاحظة
 الـService Role Key سرّي جدًا ويجب أن يبقى في Environment Variables على Vercel فقط.
+
+
+## التعديلات الأخيرة
+- نوع الحساب في التسجيل: طالب / مدرس / Admin (تعريفي فقط). لا يمنح أي صلاحية؛ الصلاحية الحقيقية من `profiles.role` فقط.
+- زر ADMIN يظهر للحساب الذي `role='admin'` فقط.
+- تم إصلاح مسارات لوحة الإدارة باستخدام Vercel rewrites.
+- أضيفت قناة WhatsApp وTikTok ورقم المساعدة 01105638650، وتم حذف رابط YouTube.
+- بعد التحديث شغّل `supabase/schema.sql` مرة أخرى في SQL Editor لتطبيق عمود `account_type` وتحديث Trigger التسجيل.

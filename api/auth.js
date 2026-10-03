@@ -19,6 +19,8 @@ function validName(name) {
   return typeof name === 'string' && name.trim().split(/\s+/).filter(Boolean).length === 4;
 }
 
+const accountTypes = ['student','teacher','admin'];
+
 const stages = {
   'ابتدائية': ['الأول الابتدائي','الثاني الابتدائي','الثالث الابتدائي','الرابع الابتدائي','الخامس الابتدائي','السادس الابتدائي'],
   'إعدادية': ['الأول الإعدادي','الثاني الإعدادي','الثالث الإعدادي'],
@@ -55,8 +57,10 @@ module.exports = async (req, res) => {
       const fullName = String(body.full_name || '').trim();
       const stage = String(body.stage || '').trim();
       const grade = String(body.grade || '').trim();
+      const accountType = String(body.account_type || 'student').trim();
       if (!validName(fullName)) return json(res, 400, { error: 'اكتب الاسم الرباعي كاملًا.' });
       if (!stages[stage] || !stages[stage].includes(grade)) return json(res, 400, { error: 'المرحلة أو الصف غير صحيح.' });
+      if (!accountTypes.includes(accountType)) return json(res, 400, { error: 'نوع الحساب غير صحيح.' });
 
       const create = await supabaseFetch('/auth/v1/admin/users', {
         method: 'POST',
@@ -64,7 +68,7 @@ module.exports = async (req, res) => {
           email: internalEmail,
           password,
           email_confirm: true,
-          user_metadata: { full_name: fullName, stage, grade }
+          user_metadata: { full_name: fullName, stage, grade, account_type: accountType }
         })
       });
       const createData = await create.json().catch(() => ({}));
@@ -77,6 +81,8 @@ module.exports = async (req, res) => {
       const user = createData.user || createData;
 
       // The database trigger creates the profile. The update below is a safety net.
+      // Keep the existing profiles schema untouched. Account type is stored only
+      // in Supabase Auth user metadata; it never grants permissions.
       const profile = await supabaseFetch(`/rest/v1/profiles?id=eq.${encodeURIComponent(user.id)}`, {
         method: 'PATCH',
         headers: { Prefer: 'return=minimal' },

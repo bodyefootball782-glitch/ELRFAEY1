@@ -132,3 +132,10 @@ footer{color:#718196!important;border-color:#17283c!important}
 /* shared dark controls/cards */
 select,input,textarea{color-scheme:dark}
 .filters button{background:#0b1522;color:#eaf2fa;border-color:#20364f}.filters button:hover{border-color:#4a79a5}.filters button.active{background:linear-gradient(135deg,#ff3341,#b70d20);border-color:transparent}
+.btn-gold{background:linear-gradient(135deg,#e7bd58,#9f6d17);color:#090b10!important;border:1px solid #f0cc69;box-shadow:0 10px 26px rgba(231,189,88,.18)}
+.btn-danger{background:linear-gradient(135deg,#ff3341,#b70d20)!important;color:#fff!important}
+.field-note{display:block;color:#8fa0b4;font-size:11px;margin-top:-6px}
+.admin-entry{position:absolute;left:16px}
+
+.admin-floating{position:absolute;left:12px;top:50%;transform:translateY(-50%);z-index:8}
+@media(max-width:600px){.admin-floating{left:8px;padding:8px 11px;font-size:11px}.topbar{padding-left:92px}}
